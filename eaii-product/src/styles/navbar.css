@@ -1,0 +1,61 @@
+header{ 
+    @apply sticky z-50 top-0 pl-[50px] pr-[50px] bg-white
+}
+nav{
+    @apply flex p-[16px] justify-between items-center text-secondaryColor font-semibold
+}
+.nav__menu-bar{
+    @apply flex flex-col gap-[6px] cursor-pointer
+}
+.nav__menu-bar div{
+    @apply w-[40px] h-[4px] bg-black rounded-[2px]
+}
+.nav__menu-list{
+    @apply flex flex-col fixed top-[60px] w-[288px] gap-[24px] right-[-288px] px-[16px] py-[24px] transition-all bg-white
+}
+.nav__menu-list.active{
+  @apply right-0
+}
+.nav__link{
+    @apply text-[18px] relative transition-all hover:font-bold
+}
+
+.nav__item.active {
+    @apply text-primaryColor
+}
+
+.center{
+    @apply min-h-[600px] flex justify-center items-center
+}
+
+.logout{
+    @apply bg-primaryColor rounded-[10px] px-[15px] py-[10px] text-onPrimary cursor-pointer text-center hover:bg-secondaryColor
+}
+
+@media screen and (min-width: 768px) {
+  .nav__menu-bar{
+    @apply invisible
+  }
+  .nav__menu-list{
+    position: unset;
+    flex-direction: row;
+    min-height: fit-content;
+    width: fit-content;
+    column-gap: 24px;
+    align-items: center;
+  }
+  .nav__link::before{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 6px;
+    bottom: -16px;
+    left: 0;
+    background-color: black;
+    transition: all 0.2s;
+  }
+  
+  .nav__link:hover:before{
+   width: 100%;
+  }
+}

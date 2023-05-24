@@ -1,0 +1,27 @@
+type Mutation {
+  loginAdmin(
+    email: String!
+    password: String!
+  ): LoginOutput
+}
+
+type Mutation {
+  registerAdmin(
+    username: String!
+    email: String!
+    password: String!
+  ): AdminOutput
+}
+
+type ImageOutput {
+  image_path: String!
+}
+
+type AdminOutput {
+  token: String!
+}
+
+type LoginOutput {
+  token: String!
+}
+
