@@ -9,6 +9,8 @@ import {CgWebsite} from 'react-icons/cg';
 import {AiFillAndroid} from 'react-icons/ai';
 import {SiIos} from 'react-icons/si';
 import {FaTelegram, FaDesktop} from 'react-icons/fa';
+import Image from 'next/image'
+import logo from '../public/images/logo.png'
 
 const ProductsComponent = () => {
 
@@ -122,7 +124,11 @@ const ProductsComponent = () => {
   }, []);
 
   return (
-    <>
+    isLoading ? <>
+        <div className='w-screen h-screen bg-white flex justify-center items-center fixed z-50'>
+      <Image src={logo} className='animate-pulse max-w-[200px]' alt="loading" />
+    </div>
+        </> : <>
     <DeleteModal onClick={deleteProduct} isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete link">
         <p>Are you sure you want to delete this product ?</p>
       </DeleteModal>

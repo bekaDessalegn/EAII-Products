@@ -7,6 +7,8 @@ import CategoryModal from './category_modal'
 import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from 'next/router'
 import cookieCutter from 'cookie-cutter'
+import Image from 'next/image'
+import logo from '../public/images/logo.png'
 
 const CategoriesComponent = () => {
 
@@ -114,12 +116,17 @@ const CategoriesComponent = () => {
 
 
   return (
+    isLoading ? <>
+        <div className='w-screen h-screen bg-white flex justify-center items-center fixed z-50'>
+      <Image src={logo} className='animate-pulse max-w-[200px]' alt="loading" />
+    </div>
+        </> : 
     <>
     <DeleteModal onClick={deleteCategory} isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete link">
         <p>Are you sure you want to delete this category ?</p>
       </DeleteModal>
     <div className='grid lg:grid-cols-4 md:grid-cols-3 gap-10 mx-10 mt-10'>
-      {categories.length == 0 ? <div> Loading </div> : categories.map((category) => (
+      {categories.length == 0 ? <div>  </div> : categories.map((category) => (
         <div className='border-2 rounded-md px-8 py-8 bg-surface'>
         <div className='w-full flex justify-end'>
           <BiEdit onClick={() => {

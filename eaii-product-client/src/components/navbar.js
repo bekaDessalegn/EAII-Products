@@ -10,6 +10,7 @@ const NavBar = ({loadingState}) => {
 
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter()
 
@@ -17,7 +18,7 @@ const NavBar = ({loadingState}) => {
 
   const fetchData = () => {
 
-    loadingState(true)
+    setIsLoading(true)
 
     const query = `
         query {
@@ -43,7 +44,7 @@ const NavBar = ({loadingState}) => {
         .then(response => response.json())
         .then(data => {
           setCategories(data.data.categories);
-          loadingState(false)
+          setIsLoading(false)
         });
   }
 
@@ -54,6 +55,11 @@ const NavBar = ({loadingState}) => {
   }, []);
 
   return (
+    isLoading ? <>
+    <div className='w-screen h-screen bg-white flex justify-center items-center fixed z-50'>
+      <Image src={logo} className='animate-pulse max-w-[200px]' alt="loading" />
+    </div>
+    </> : 
     <header>
       <nav className={`nav`}>
         <div className="flex flex-row justify-center items-center">

@@ -89,7 +89,11 @@ const Dashboard = () => {
       }, []);
 
     return (
-        isLoading ? <></> : <div className='flex flex-col justify-center items-center'>
+        isLoading ? <>
+        <div className='w-screen h-screen bg-white flex justify-center items-center fixed z-50'>
+      <Image src={logo} className='animate-pulse max-w-[200px]' alt="loading" />
+    </div>
+        </> : <div className='flex flex-col justify-center items-center'>
             <div className='max-w-fit'>
             <div className='flex flex-row px-10 py-10 border-2 rounded-md mx-10'>
                 <div>

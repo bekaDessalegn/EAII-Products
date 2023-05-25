@@ -7,6 +7,8 @@ import AddIcon from '@mui/icons-material/Add';
 import AdminModal from './admin_modal';
 import { useRouter } from 'next/router'
 import cookieCutter from 'cookie-cutter'
+import Image from 'next/image'
+import logo from '../public/images/logo.png'
 
 const AdminsComponent = () => {
 
@@ -114,7 +116,11 @@ const AdminsComponent = () => {
   }, []);
 
   return (
-    <>
+    isLoading ? <>
+        <div className='w-screen h-screen bg-white flex justify-center items-center fixed z-50'>
+      <Image src={logo} className='animate-pulse max-w-[200px]' alt="loading" />
+    </div>
+        </> : <>
     <DeleteModal onClick={() => {
       deleteAdmin();
     }} isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete link">
