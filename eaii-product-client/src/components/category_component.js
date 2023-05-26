@@ -10,6 +10,7 @@ import {FaTelegram, FaDesktop} from 'react-icons/fa';
 const CategoryComponent = ({loadingState}) => {
 
   const [categories, setCategories] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const {id} = router.query;
 
@@ -23,6 +24,7 @@ const CategoryComponent = ({loadingState}) => {
   const fetchData = () => {
 
     loadingState(true);
+    setIsLoading(true);
 
     const query = `
         query {
@@ -53,6 +55,7 @@ const CategoryComponent = ({loadingState}) => {
         .then(data => {
 
           loadingState(false);
+          setIsLoading(false);
 
           let cats = data.data;
 
@@ -72,7 +75,7 @@ const CategoryComponent = ({loadingState}) => {
     <>
     {
       categories.length == 0 ? <div>  </div> :
-    <AnimatePresence>
+      isLoading ? <></> : <AnimatePresence>
     <div>
         <div className='hero h-[45vh] flex flex-col justify-center items-center mb-32 relative'>
             <p className='text-[36px] font-bold text-onPrimary'>{categories.name}</p>
