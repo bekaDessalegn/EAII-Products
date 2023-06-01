@@ -1,0 +1,60 @@
+table:
+  name: categories
+  schema: public
+array_relationships:
+  - name: categories_product
+    using:
+      foreign_key_constraint_on:
+        column: category_name
+        table:
+          name: products
+          schema: public
+insert_permissions:
+  - role: eaii-admin
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - description
+        - icon
+        - id
+        - name
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - created_at
+        - description
+        - icon
+        - id
+        - name
+        - updated_at
+      filter: {}
+  - role: eaii-admin
+    permission:
+      columns:
+        - created_at
+        - description
+        - icon
+        - id
+        - name
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: eaii-admin
+    permission:
+      columns:
+        - created_at
+        - description
+        - icon
+        - id
+        - name
+        - updated_at
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: eaii-admin
+    permission:
+      filter: {}

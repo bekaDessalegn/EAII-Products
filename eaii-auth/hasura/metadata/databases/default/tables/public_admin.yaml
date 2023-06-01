@@ -1,0 +1,36 @@
+table:
+  name: admin
+  schema: public
+insert_permissions:
+  - role: eaii-admin
+    permission:
+      check: {}
+      columns:
+        - email
+        - password
+        - username
+        - id
+select_permissions:
+  - role: eaii-admin
+    permission:
+      columns:
+        - email
+        - password
+        - username
+        - id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: eaii-admin
+    permission:
+      columns:
+        - email
+        - password
+        - username
+        - id
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: eaii-admin
+    permission:
+      filter: {}

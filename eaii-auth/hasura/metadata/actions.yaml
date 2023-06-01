@@ -1,0 +1,21 @@
+actions:
+  - name: loginAdmin
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/auth/login
+    permissions:
+      - role: anonymous
+  - name: registerAdmin
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/auth/register
+    permissions:
+      - role: eaii-admin
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: ImageOutput
+    - name: AdminOutput
+    - name: LoginOutput
+  scalars: []
